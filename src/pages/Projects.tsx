@@ -1,40 +1,14 @@
 import { motion } from "motion/react";
-import { Mail, Layers, ArrowRight } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Mail } from "lucide-react";
 
 export default function Projects() {
-  const [skills, setSkills] = useState([]);
-  const [projects, setProjects] = useState([]);
-  const [profile, setProfile] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    Promise.all([
-      fetch('http://localhost:3001/api/skills').then(res => res.json()),
-      fetch('http://localhost:3001/api/projects').then(res => res.json()),
-      fetch('http://localhost:3001/api/profile').then(res => res.json())
-    ])
-      .then(([skillsData, projectsData, profileData]) => {
-        const transformedSkills = skillsData.flatMap(category => 
-          category.skills.split(', ').map(skill => ({
-            name: skill,
-            level: 85,
-            category: category.category
-          }))
-        );
-        setSkills(transformedSkills);
-        setProjects(projectsData);
-        setProfile(profileData);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error('Error fetching data:', err);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) return <div>Loading...</div>;
-
+  const skills = [
+    { name: "Public Speaking", level: 85, category: "Communication" },
+    { name: "Kerjasama Tim", level: 95, category: "Soft Skill" },
+    { name: "Problem Solving", level: 80, category: "Soft Skill" },
+    { name: "Manajemen Waktu", level: 85, category: "Soft Skill" },
+    { name: "Kepemimpinan", level: 75, category: "Soft Skill" },
+  ];
   return (
     <div className="bg-paper min-h-screen">
       {/* Header Section */}
@@ -78,55 +52,12 @@ export default function Projects() {
                   <span className="text-xs font-black tracking-widest">{skill.level}%</span>
                 </div>
               </div>
-
-              <div className="pt-4 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 relative z-10">
-                <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest">
-                  Mastery Level <ArrowRight size={12} />
-                </div>
-              </div>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-brand/10">
-        <div className="space-y-16">
-          <div className="text-center space-y-4">
-            <span className="text-xs font-black uppercase tracking-[0.2em] text-accent">Proyek & Pengalaman</span>
-            <h2 className="text-5xl font-black tracking-tighter text-brand">PROYEK <span className="text-accent">SAYA.</span></h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-paper border border-brand/10 p-8 space-y-6 hover:border-accent transition-colors"
-              >
-                <div className="space-y-2">
-                  <h3 className="text-2xl font-black tracking-tighter">{project.title}</h3>
-                  <p className="text-brand/60 text-sm">{project.description}</p>
-                </div>
-                <div className="space-y-4">
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.split(', ').map((tech, i) => (
-                      <span key={i} className="px-3 py-1 bg-brand/5 text-brand text-xs font-bold uppercase tracking-widest">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <a href={project.link} className="inline-flex items-center gap-2 text-accent hover:text-brand transition-colors text-sm font-bold">
-                    View Project <ArrowRight size={16} />
-                  </a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Projects Section dihapus sesuai permintaan user */}
 
       {/* Values Section - Unique Layout */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-40 border-t border-brand/10">
@@ -181,7 +112,7 @@ export default function Projects() {
             Saya selalu terbuka untuk belajar hal baru dan berkontribusi dalam berbagai kegiatan positif.
           </p>
           <a
-            href={`mailto:${profile?.email || 'vincentiussusanto88@gmail.com'}`}
+            href="mailto:vincentiussusanto88@gmail.com"
             className="text-4xl lg:text-6xl font-black hover:text-brand transition-colors break-all tracking-tighter"
           >
             HUBUNGI SAYA.
@@ -191,6 +122,4 @@ export default function Projects() {
     </div>
   );
 }
-
-
 
