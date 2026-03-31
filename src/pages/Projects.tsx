@@ -77,12 +77,6 @@ export default function Projects() {
                   <span className="text-xs font-black tracking-widest">{skill.level}%</span>
                 </div>
               </div>
-
-              <div className="pt-4 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 relative z-10">
-                <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest">
-                  Mastery Level <ArrowRight size={12} />
-                </div>
-              </div>
             </motion.div>
           ))}
         </div>
@@ -143,7 +137,7 @@ export default function Projects() {
             Saya selalu terbuka untuk belajar hal baru dan berkontribusi dalam berbagai kegiatan positif.
           </p>
           <a
-            href={`mailto:${profile?.email || 'vincentiussusanto88@gmail.com'}`}
+            href="mailto:vincentiussusanto88@gmail.com"
             className="text-4xl lg:text-6xl font-black hover:text-brand transition-colors break-all tracking-tighter"
           >
             HUBUNGI SAYA.
