@@ -1,15 +1,39 @@
 import { motion } from "motion/react";
+import { Mail, Layers, ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Projects() {
-  const skills = [
-    { name: "React", level: 85, category: "Frontend" },
-    { name: "Vue.js", level: 85, category: "Frontend" },
-    { name: "HTML", level: 85, category: "Frontend" },
-    { name: "CSS", level: 85, category: "Frontend" },
-    { name: "JavaScript", level: 85, category: "Frontend" },
-    { name: "Node.js", level: 85, category: "Backend" },
-  ];
+  const [skills, setSkills] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    Promise.all([
+      fetch('http://localhost:3001/api/skills').then(res => res.json()),
+      fetch('http://localhost:3001/api/projects').then(res => res.json()),
+      fetch('http://localhost:3001/api/profile').then(res => res.json())
+    ])
+      .then(([skillsData, projectsData, profileData]) => {
+        const transformedSkills = skillsData.flatMap(category => 
+          category.skills.split(', ').map(skill => ({
+            name: skill,
+            level: 85,
+            category: category.category
+          }))
+        );
+        setSkills(transformedSkills);
+        setProjects(projectsData);
+        setProfile(profileData);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error fetching data:', err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
   return (
     <div className="bg-paper min-h-screen">
       {/* Header Section */}
@@ -51,6 +75,12 @@ export default function Projects() {
                 <div className="flex items-center gap-4">
                   <div className="flex-grow h-px bg-brand/10 group-hover:bg-white/20 transition-colors"></div>
                   <span className="text-xs font-black tracking-widest">{skill.level}%</span>
+                </div>
+              </div>
+
+              <div className="pt-4 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 relative z-10">
+                <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest">
+                  Mastery Level <ArrowRight size={12} />
                 </div>
               </div>
             </motion.div>
