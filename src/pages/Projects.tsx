@@ -89,44 +89,7 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-brand/10">
-        <div className="space-y-16">
-          <div className="text-center space-y-4">
-            <span className="text-xs font-black uppercase tracking-[0.2em] text-accent">Proyek & Pengalaman</span>
-            <h2 className="text-5xl font-black tracking-tighter text-brand">PROYEK <span className="text-accent">SAYA.</span></h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-paper border border-brand/10 p-8 space-y-6 hover:border-accent transition-colors"
-              >
-                <div className="space-y-2">
-                  <h3 className="text-2xl font-black tracking-tighter">{project.title}</h3>
-                  <p className="text-brand/60 text-sm">{project.description}</p>
-                </div>
-                <div className="space-y-4">
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.split(', ').map((tech, i) => (
-                      <span key={i} className="px-3 py-1 bg-brand/5 text-brand text-xs font-bold uppercase tracking-widest">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <a href={project.link} className="inline-flex items-center gap-2 text-accent hover:text-brand transition-colors text-sm font-bold">
-                    View Project <ArrowRight size={16} />
-                  </a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Projects Section dihapus sesuai permintaan user */}
 
       {/* Values Section - Unique Layout */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-40 border-t border-brand/10">
