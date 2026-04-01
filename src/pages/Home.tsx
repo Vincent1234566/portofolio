@@ -91,8 +91,7 @@ export default function Home() {
             </span>
           </div>
 
-
-      {/* Marquee Section */}
+          {/* Marquee Section */}
       <div className="marquee-container">
         <div className="marquee-content text-4xl font-black uppercase tracking-tighter">
           &nbsp;• BELAJAR • BERKARYA •  PRESTASI •  INOVASI • BELAJAR • BERKARYA •  PRESTASI • DEDIKASI • INOVASI
