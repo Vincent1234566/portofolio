@@ -91,25 +91,6 @@ export default function Home() {
             </span>
           </div>
 
-          {/* Floating Feature Bubble */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.6 }}
-            className="absolute bottom-12 right-12 bg-white p-6 rounded-full outline outline-1 outline-brand -rotate-6 shadow-2xl hidden lg:block"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white">
-                <Briefcase size={20} />
-              </div>
-              <div>
-                <p className="text-xs font-black uppercase tracking-widest text-brand">Ketua Kelas</p>
-                <p className="text-[10px] text-brand/50">SMA Negeri 1</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Marquee Section */}
       <div className="marquee-container">
