@@ -45,10 +45,10 @@ export default function Home() {
               Pelajar 
             </span>
             <h1 className="text-7xl lg:text-[112px] font-black leading-[0.88] tracking-[-0.04em] text-brand">
-              {profile?.name?.split(' ')[0]} <br /> <span className="text-accent">{profile?.name?.split(' ')[1]}.</span>
+              {(profile?.name || 'Vincentius Gonzales').split(' ')[0]} <br /> <span className="text-accent">{(profile?.name || 'Vincentius Gonzales').split(' ')[1]}.</span>
             </h1>
             <p className="text-xl text-brand/60 font-light max-w-md leading-relaxed">
-              {profile?.bio}
+              {profile?.bio || 'Seorang siswa yang bersemangat dalam kegiatan akademik dan non-akademik di sekolah. Berkomitmen untuk terus berprestasi.'}
             </p>
           </motion.div>
 
@@ -98,7 +98,15 @@ export default function Home() {
             transition={{ delay: 0.6 }}
             className="absolute bottom-12 right-12 bg-white p-6 rounded-full outline outline-1 outline-brand -rotate-6 shadow-2xl hidden lg:block"
           >
-            {/* Bubble 'Ketua Kelas' dihapus sesuai permintaan */}
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white">
+                <Briefcase size={20} />
+              </div>
+              <div>
+                <p className="text-xs font-black uppercase tracking-widest text-brand">Ketua Kelas</p>
+                <p className="text-[10px] text-brand/50">SMA Negeri 1</p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
