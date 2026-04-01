@@ -29,6 +29,17 @@ export default function Projects() {
       })
       .catch(err => {
         console.error('Error fetching data:', err);
+        // Fallback to static data if API fails (for Vercel)
+        const fallbackSkills = [
+          { name: "Public Speaking", level: 85, category: "Communication" },
+          { name: "Kerjasama Tim", level: 95, category: "Soft Skill" },
+          { name: "Problem Solving", level: 80, category: "Soft Skill" },
+          { name: "Manajemen Waktu", level: 85, category: "Soft Skill" },
+          { name: "Kepemimpinan", level: 75, category: "Soft Skill" },
+        ];
+        setSkills(fallbackSkills);
+        setProjects([]);
+        setProfile({ email: 'vincentiussusanto88@gmail.com' });
         setLoading(false);
       });
   }, []);
