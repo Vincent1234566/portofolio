@@ -25,7 +25,7 @@ export default function Home() {
   const experiences = [
     {
       title: "Organisasi Kepramukaan",
-      company: "SMK Frateran",
+      company: "SMAK Frateran",
       period: "2023-2025",
       description: "Dewan Ambalan Kepramukaan",
     },
@@ -115,7 +115,7 @@ export default function Home() {
           </div>
           <div className="lg:col-span-8 space-y-12">
             <p className="text-3xl text-brand/80 leading-tight font-light">
-              Sebagai pelajar SMK Frateran, saya memiliki ketertarikan pada bidang teknologi dan kreativitas yang menggunakan keterampilan tangan. Saya berkomitmen untuk terus belajar, mengembangkan kemampuan, serta membangun pengalaman melalui berbagai proyek dan pembelajaran.
+              Sebagai pelajar SMAK Frateran, saya memiliki ketertarikan pada bidang teknologi dan kreativitas yang menggunakan keterampilan tangan. Saya berkomitmen untuk terus belajar, mengembangkan kemampuan, serta membangun pengalaman melalui berbagai proyek dan pembelajaran.
             </p>
             <div className="grid grid-cols-1 gap-12 pt-12 border-t border-brand/10">
               <div className="space-y-4">
